@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{ margin:0px; border:0px solid red; padding:0px;}
+body{ }
+#right{ width:570px; height:1268px; }
+#top{ width:292px; height:52px; color:#FFF; font-size:2em; margin-top:36px; margin-left:40px;}
+#top img{ margin-bottom:15px;}
+button {
+  margin: 30px 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 2px solid;
+  width:150px;
+ 
+  font: 16px 'Microsoft yahei', sans-serif;
+  text-transform: uppercase;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.btn-2 {
+  color: #fff;
+  border-color: #fff;
+  background: -webkit-linear-gradient(left, #e4f68f, #e4f68f) no-repeat;
+  background: linear-gradient(to right, #62c1f8, #62c1f8) no-repeat;
+  background-size: 100% 0%;
+  position:relative;
+  left:20px;
+  top:30px;
+}
+.btn-2:hover {
+  background-size: 100% 100%;
+  color: #27323A;
+}
+
+#tab{ margin-left:40px; color:#FFF; font-family:"汉仪中楷简"; font-size:24px; }
+#tab span{ color:#d4cccc;}
+#input1{ width:400px; height:29px; border:1px solid #fff; padding-top:6px; border-radius:5px; padding-left:5px; background-color:#FFF; color:#000;}
+#input2{width:180px; height:30px ;border-radius:5px}
+#a1{ display:block; width:208px; height:88px; background:url(../images/images7/images/3.png) no-repeat left top; padding-right:30px; }
+#a1:hover{  background:url(../images/images7/images/4.png) no-repeat left top; }
+#input3{ width:400px; height:30px;  border-radius:5px;  background-color:#FFF; color:#000;}
+
+</style>
+<script>
+window.onload=function(){
+	document.getElementById("a1").onclick=function()
+	{
+		if(confirm("提交成功，是否马上提交需求分析？"))
+		{
+				window.alert("提交成功");
+				 return true;
+			
+			}
+			else{
+			
+				 return false;
+				}
+		
+		}
+	document.getElementById("btn2").onclick=function()
+	{
+		if(confirm("保存成功，要取消需求吗？"))
+		{
+				window.alert("取消成功");
+				 return true;
+			
+			}
+			else{
+			
+				 return false;
+				}
+		
+		}
+	
+	
+	}
+
+
+</script>
+
+</head>
+
+<body>
+<div id="right">
+<button id="btn1" name="btn1" style="margin-left:30px;" class="btn-2">提交审核</button>
+<button id="btn2" name="btn2" style="margin-left:30px;" class="btn-2">申请终止需求</button>
+<div id="top">
+  <img src="../images/images7/images/3_03.png" width="50" height="51" align="center" />工单详情</div>
+
+<table id="tab" width="500" height="466" border="0">
+  <tr>
+    <td width="250" height="98"><span>需求编号</span><br /><br />
+     000005898</td>
+    <td width="250" height="98"><span>需求名称</span><br /><br />
+     OA帐号申请流程变更</td>
+  </tr>
+  <tr>
+    <td width="250" height="98"><span>计划上线时间</span><br /><br />
+     2011-10-15</td>
+    <td width="250" height="98"><span>执行厂商</span><br /><br />
+     炎黄新星</td>
+  </tr>
+   <tr>
+    <td width="250" height="98"><span>提出人</span><br /><br />
+     孙玉峰</td>
+    <td width="250" height="98"><span>提出单位</span><br /><br />
+     人力资源部</td>
+  </tr>
+   <tr>
+    <td width="250" height="98"><span>项目经理</span><br /><br />
+     李莉香</td>
+    <td width="250" height="98"><span>需求状态</span><br /><br />
+     新建需求</td>
+  </tr>
+  </table>
+<div id="top">
+  <img src="../images/images7/images/3_03.png" width="50" height="51" align="center" />填写需求确认</div>
+<form action="" method="get">
+<table id="tab" width="454"  height="430" border="0">
+  <tr>
+    <td height="107" colspan="2"><span>需求确认表</span><br /><br /><input id="input1" name=""  type="file" />
+     </td>
+  </tr>
+  <tr>
+    <td height="107" colspan="2"><span>工作量预估表</span><br /><br /><input id="input1" name=""  type="file" /></td>
+  </tr>
+  <tr>
+    <td height="107"><span>预计完成时间</span><br /><br /><input id="input2" name="" type="text" /></td>
+    <td><span>预估工作量</span><br /><br /><input id="input2" name="" type="text" /></td>
+  </tr>
+  <tr>
+    <td height="107" colspan="2"><span>初评工作量</span><br /><br /><input id="input3" name=""   type="text" /></td>
+  </tr>
+  <tr>
+    <td height="107" colspan="2" align="center" valign="middle"><a id="a1" href=""></a></td>
+  </tr>
+</table>
+</form>
+</div>
+</body>
+</html>

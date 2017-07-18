@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fzy.demo.audit.mapper.IAuditMapper">
+	
+
+	
+	<!-- 定义要操作的SQL语句：根据工单ID查询审核意见列表 -->
+	<select id="findAuditListByOrderId" resultType="hashmap">
+	    SELECT
+			a.id,
+			a.audit_status,
+			a.audit_opinion,
+		  	a.audit_man,
+		 	a.order_id,
+		 	DATE_FORMAT(a.audit_time,'%Y-%m-%d %T') audit_time_str
+		FROM
+			t_audit a
+		WHERE
+			a.order_id = #{order_id}
+	</select>
+	<!-- 定义添加需求 -->
+	<!--执行增加操作的SQL语句。id和parameterType分别与IUserOperation接口中的addUser方法的名字和参数类型一致。
+    useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
+    <insert id="saveAudit" parameterType="hashmap" > 
+        insert into t_audit(id,audit_status,audit_opinion,audit_man,order_id)  
+             values(#{id},#{audit_status},#{audit_opinion},#{audit_man},#{order_id}) 
+	</insert>
+</mapper> 

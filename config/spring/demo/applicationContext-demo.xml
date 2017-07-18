@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:context="http://www.springframework.org/schema/context"   
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xmlns:tx="http://www.springframework.org/schema/tx"   
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+                        http://www.springframework.org/schema/context   
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+                        http://www.springframework.org/schema/aop   
+                        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+                        http://www.springframework.org/schema/tx   
+                        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    
+    
+    <!-- 用户-->
+    <bean id="UserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.user.mapper.IUserMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+     <!-- 资源-->
+    <bean id="ResourceMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.resource.mapper.IResourceMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+      <!-- 系统-->
+    <bean id="SysMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.sys.mapper.ISysMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+       <!-- 附件-->
+    <bean id="AttachMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.attach.mapper.IAttachMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+      <!-- 厂商-->
+    <bean id="CompanyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.company.mapper.ICompanyMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+     <!-- 需求分析-->
+    <bean id="AnalyseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.analyse.mapper.IAnalyseMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+     <!-- 需求确认-->
+    <bean id="ConfirmMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.confirm.mapper.IConfirmMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+     <!-- 需求审核-->
+    <bean id="AuditMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.fzy.demo.audit.mapper.IAuditMapper" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+</beans>

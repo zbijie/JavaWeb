@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*首页 css*/
+.m_left{ width:305px;}
+.m_right{ margin-left:315px; display:block;}
+.kjfs{ padding:10px 0;}
+.kjfs li{ float:left; padding:0px 35px; text-align:center;}
+
+/*预警信息*/
+.slide-pic { padding:10px 10px 10px 15px; HEIGHT: auto}
+.slide-pic A#prev {DISPLAY: block; BACKGROUND: url(../images/slide.png) no-repeat; _BACKGROUND: url(../images/slide.gif) no-repeat; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 273px; TEXT-INDENT: -9999em; HEIGHT: 14px; outline: none}
+.slide-pic A#next {DISPLAY: block; BACKGROUND: url(../images/slide.png) no-repeat; _BACKGROUND: url(../images/slide.gif) no-repeat; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 273px; TEXT-INDENT: -9999em; HEIGHT: 14px; outline: none}
+.slide-pic A#prev {BACKGROUND-POSITION: center 0px}
+.slide-pic A#next {BACKGROUND-POSITION: center -20px}
+.slide-pic A#prev:hover {BACKGROUND-POSITION: center -40px}
+.slide-pic A#next:hover {BACKGROUND-POSITION: center -60px}
+.slide-pic A.gray#prev {BACKGROUND-POSITION: center -80px}
+.slide-pic A.gray#next {BACKGROUND-POSITION: center -100px}
+.slide-pic .pic-container {MARGIN: 5px 0px; OVERFLOW: hidden; WIDTH: 273px; HEIGHT: 300px}
+.slide-pic UL {WIDTH: 303px}
+.slide-pic UL LI { CURSOR: pointer; padding:8px 0; border-bottom:1px solid #cbcbcb; HEIGHT: 43px; OVERFLOW: hidden;  WIDTH: 273px;}
+.slide-pic UL LI P { font-weight:bold; }
+.slide-pic UL LI span { font-size:12px; line-height:30px;}
+
+
+/*项目管理*/
+.xmgl li{ text-align:right; line-height:35px; height:35px; *line-height:31px; *height:31px; border-bottom:1px solid #c5c5c5; background:url(../images/icon_7.gif) no-repeat left center; padding-left:20px;}
+.xmgl li a{ float:left}
+.xmgl li .bm,.xmgl li .name,.xmgl li .time{ float:right}
+.xmgl li .bm{ width:100px;}
+.xmgl li .name{ width:80px;}
+.xmgl li .time{ width:100px;}
+
+/*统计表*/
+.Hr_1 IMG { margin:0 auto; }
+.Hr_11 a{ width:92px; height:65px; display:block; text-align:center;}
+.Hr_11 {  WIDTH: 92px; border-right:1px solid #d1d1d1; background:#fafafa; LINE-HEIGHT: 32px;  float:left; font-size:12px;}
+.Hr_11 .nor { padding-top:10px;   TEXT-DECORATION: none}
+.Hr_11 .act { padding-top:10px; BACKGROUND:#fee2c9; font-weight:bold; TEXT-DECORATION: none}
+
+/*个人工作台*/
+.gr_left{ width:150px; float:left; background:#fafafa; border-right:1px solid #cdcdcd; min-height:600px;}
+.gr_left li{ width:121px; height:53px; padding-left:30px; border-bottom:1px solid #cdcdcd; display:block; line-height:53px; background:url(images/bg_ge_left.gif) no-repeat bottom;}
+.gr_left .on{width:121px; height:53px; display:block; background:url(images/bg_ge_left.gif) no-repeat top; color:#f74f14; font-weight:bold;}
+.gr_left .on a{ color:#f74f14}
+.gr_right{ margin-left:160px; display:block; min-height:580px;}
+.gr_search{ border-bottom:1px dashed #d0d0d0;}
+.gr_tab{ border-left:1px solid #cdcdcd; border-top:1px solid #cdcdcd; font-size:12px;}
+.gr_tab td, .gr_tab th{border-right:1px solid #cdcdcd; border-bottom:1px solid #cdcdcd;}
+.gr_tab th{ background:url(images/bg_ge_tabth.gif) repeat-x; height:33px; line-height:33px;}
+.gr_tab{ line-height:33px;}
+
+.grgz_tab{ line-height:34px; border-left:1px solid #cdcdcd; border-top:1px solid #cdcdcd; font-size:12px; float:left;}
+.grgz_tab td, .grgz_tab th{border-right:1px solid #cdcdcd; border-bottom:1px solid #cdcdcd; padding:0 10px;}
+.grgz_tab th{ background:#fafafa; width:15%; font-weight:normal; text-align:right;}
+.grgz_tab .th1{ background:#f2f2f2; width:15%; font-weight:normal; text-align:right;}
+
+/*统计分析*/
+.tj_box1{ border:1px solid #cdcdcd; background:url(images/bg_tj_box.gif) no-repeat left top; height:163px; padding:10px;}
+.tj_box1_tit{ height:50px; line-height:50px; border-bottom:1px dashed #d0d0d0; font-size:20px; font-family:"微软雅黑";}
+/*详情table*/
+.czrz_xq td{ height:107px; background:url(images/u39_line.png) repeat-x center;}
+.czrz_xq .td_1{ background:url(images/u39_line2.png) repeat-x center;}
+.czrz_xq .td1{ background:url(images/u39_line.png) no-repeat 50px  center;}
+.czrz_xq .td1_1{ background:url(images/u39_line2.png) no-repeat 50px  center;}
+.czrz_xq .td2{ background:url(images/u39_line.png) no-repeat -50px  center;}
+.czrz_xq .td2_2{ background:url(images/u39_line2.png) no-repeat -50px  center;}
+.tj_jdt{ width:588px; height:65px; background:url(images/bg_tj_jdt.gif) no-repeat 0 39px ;}
+.tj_jdt_1{height:65px; background:url(images/bg_tj_jdt2.gif) no-repeat 0 39px;}
+
+/*质检管理*/
+.search_tit{ margin:10px; border:1px solid #cdcdcd; height:40px; padding:0 10px;}
+.zj_left{ width:440px; float:left;}
+.box1_zj1{ border:1px solid #e33a3c; border-right:0px;}
+.zj_tab1 td{ border-right:1px solid #e33a3c; width:33.3%}
+.zj_tjb img{ width:438px; height:298px; border:1px solid #CCC}
+.zj_right{ margin-left:450px; display:block;}
+.zj_tjb2 img{ width:99%;  border:1px solid #CCC}

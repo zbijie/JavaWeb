@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{ margin:0px; border:0px solid red; padding:0px; font-family:"汉仪中楷简";}
+#top2{ width:750px; height:60px; background-color:#282828; margin:0px auto; color:#FFF; font-size:24px; text-align:center; line-height:60px;}
+#top2 img{ float:left; }
+#top2 span{ padding-right:70px;}
+#box2{ width:750px; height:1294px; margin-top:108px; background:url(images/images/1_02.png) no-repeat left top; margin:0px auto;}
+#input2{ width:604px; height:50px;  border-radius:10px; font-size:30px; color:#000; padding-left:10px;}
+#input3{ width:280px; height:50px;  border-radius:10px; font-size:30px; color:#000; padding-left:10px;}
+#tab2{ margin:0px auto; color:#FFF;}
+#tab2 span{ color:#bfc3c4; font-size:20px;}
+#input4{ border-radius:5px; color:#bfc3c4; width:454px; height:34px; background-color:#FFF; padding-top:10px;}
+#input5{ background-color:a4a9ae; width:140px; height:44px; margin-left:10px;border-radius:5px; font-size:18px;}
+#td1{ padding-top:10px;}
+#input6{ width:100px; height:30px; color:#000; margin-top:45px; font-family:"宋体" }
+</style>
+<script>
+window.onload=function(){
+	document.getElementById("btn1").onclick=function()
+	{
+		if(confirm("保存成功，要马上下发给厂商吗？"))
+		{
+				window.alert("下发成功");
+				 return true;
+			
+			}
+			else{
+			
+				 return false;
+				}
+		
+		}
+	
+	
+	
+	}
+
+
+</script>
+</head>
+
+<body>
+<div id="top2"><a href="index.html"><img src="images/images/工单2_03.png" width="88" height="60" /></a><span>新建需求</span></div>
+
+     <div id="box2"><form action="new.html" method="get">
+      <table id="tab2" width="642" height="1200" border="0">
+  <tr>
+    <td height="120" colspan="2">需求名称<br /><br /><input name="" type="text" id="input2" maxlength="20"  /></td>
+    </tr>
+  <tr>
+    <td height="120" colspan="2">系统编号<br /><br /><input name="" type="text" id="input2" maxlength="20"  /></td>
+    </tr>
+  <tr>
+    <td height="120" colspan="2">需求大小<br /><br /><input name="in1" type="radio" value="" /><span>大 （90人天以上）</span><input name="in1" type="radio" value="" /><span>中（30-90人天以内，包括90人天）</span><br /><input name="in1" type="radio" value="" /><span>小 （30人天以下，包括30人天）</span></td>
+    </tr>
+  <tr>
+    <td height="120" colspan="2">OA工单号<br /><br /><input name="" type="text" id="input2" maxlength="20"  /></td>
+    </tr>
+  <tr>
+    <td width="321" height="120">归属系统<br /><br /><input name="" type="text" id="input3" maxlength="20"  /></td>
+    <td width="321" height="120">需求提出人<br /><br /><input name="" type="text" id="input3" maxlength="20"  /></td>
+  </tr>
+  <tr>
+    <td height="120" colspan="2">需求部门/单位<br /><br /><input name="" type="text" id="input2" maxlength="20"  /></td>
+    </tr>
+  <tr>
+    <td width="321" height="120">执行厂商<br /><br /><input name="" type="text" id="input3" maxlength="20"  /></td>
+    <td width="321" height="120">开发负责人<br /><br /><input name="" type="text" id="input3" maxlength="20"  /></td>
+  </tr>
+  <tr>
+    <td height="120" colspan="2">相关附件<br /><br /><input name="file" type="file" id="input4"   /> <input id="input5" name="重置" type="reset" value="重置" /></td>
+    </tr>
+  <tr>
+    <td height="120" colspan="2">需求描述<br /><br /><input  name="" type="text" id="input2" maxlength="20"  /></td>
+    </tr>
+  <tr>
+    <td height="120" colspan="2" align="center" valign="middle"><input id="btn1" name="btn1" type="image" src="images/images/2_03.png"/></td>
+    </tr>
+</table>
+
+</form></div>
+</body>
+</html>

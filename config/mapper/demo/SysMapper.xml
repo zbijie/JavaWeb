@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fzy.demo.sys.mapper.ISysMapper">
+	
+
+	<!-- 定义要操作的SQL语句 -->
+	<select id="findAllOrder" resultType="hashmap">
+	      SELECT
+	      	a.id,
+			order_name,
+			sys_no,
+			order_scope,
+			oa_no,
+			app_sys_id,
+			order_dept,
+			develop_man,
+			execute_company,
+			(
+				SELECT
+					company_name
+				FROM
+					t_company
+				WHERE
+					id = a.execute_company
+			) execute_company_name,
+			status,
+			case 
+				when status='0' then '新建需求'
+        when status='1' then '需求分析'
+				when status='2' then '需求确认'
+				when status='3' then '需求待审核'
+				when status='4' then '执行开发'
+				when status='5' then '需求验收'
+				when status='6' then '上线申请'
+				when status='7' then '上线审批'
+				when status='8' then '上线割接'
+				when status='9' then '后评估'
+				when status='10' then '正常归档'
+		  end status_name,
+			order_apply_man,
+			order_detail,
+			estimate_date
+			
+		FROM
+			t_order	a LEFT JOIN t_order_confirm b on a.id=b.order_id	
+ 		where 1=1
+ 		
+ 		<if test=" null != sys_no and '' !=sys_no  ">
+            AND sys_no =#{sys_no}
+        </if>
+        <if test=" null != order_name and '' !=order_name  ">
+            AND order_name like '%${order_name}%'
+        </if>
+        <if test=" null != order_apply_man and '' !=order_apply_man  ">
+            AND order_apply_man like '%${order_apply_man}%'
+        </if>
+        <if test=" null != order_dept and '' !=order_dept  ">
+            AND order_dept like '%${order_dept}%'
+        </if>
+        <if test=" null != develop_man and '' !=develop_man  ">
+            AND develop_man like '%${develop_man}%'
+        </if>
+        <if test=" null != execute_company and '' !=execute_company  ">
+            AND execute_company =#{execute_company}
+        </if>
+        <if test=" null != estimate_date_begin and '' !=estimate_date_begin  and null != estimate_date_end and '' !=estimate_date_end">
+           AND estimate_date &gt;=str_to_date(#{estimate_date_begin},'%Y-%m-%d') AND estimate_date &lt;= str_to_date(#{estimate_date_end},'%Y-%m-%d')
+        </if>
+         <if test=" null != estimate_date_begin and '' !=estimate_date_begin and   estimate_date_end == '' ">
+           AND estimate_date &gt;=str_to_date(#{estimate_date_begin},'%Y-%m-%d')  
+        </if>
+         <if test=" null != estimate_date_end and '' !=estimate_date_end and   estimate_date_begin == '' ">
+           AND estimate_date &lt;=str_to_date(#{estimate_date_end},'%Y-%m-%d')  
+        </if>
+       
+        	
+	</select>
+	<!-- 定义要操作的SQL语句:根据ID查询工单 -->
+	<select id="findOrderById" resultType="hashmap">
+	     SELECT
+	     	id,
+			order_name,
+			status,
+			order_scope,
+			oa_no,
+			app_sys_id,
+			order_dept,
+			sys_no,
+			develop_man,
+			execute_company,
+			(
+				SELECT
+					company_name
+				FROM
+					t_company
+				WHERE
+					id = a.execute_company
+			) execute_company_name,
+			order_detail,
+			order_apply_man
+		FROM
+			t_order	a
+ 		where id=#{id}
+	</select>
+	<!-- 定义添加需求 -->
+	<!--执行增加操作的SQL语句。id和parameterType分别与IUserOperation接口中的addUser方法的名字和参数类型一致。
+    useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
+    <!--<insert id="addOrder" parameterType="hashmap" 
+        useGeneratedKeys="true" keyProperty="id"> 
+        insert into t_order(order_name,sys_no)  
+             values(#{order_name},#{sys_no})  
+    </insert>-->
+    <insert id="addOrder" parameterType="hashmap" > 
+        insert into t_order(id,order_name,status,sys_no,order_scope,oa_no,app_sys_id,order_dept,order_apply_man,develop_man,execute_company,order_detail)  
+             values(#{id},#{order_name},#{status},#{sys_no},#{order_scope},#{oa_no},#{app_sys_id},#{order_dept},#{order_apply_man},#{develop_man},#{execute_company},#{order_detail}) 
+	</insert>
+	
+	<delete id="deleteOrder" parameterType="hashmap">
+		delete from t_order where id=#{id}
+	</delete>
+	
+	<!-- 定义修改需求 -->
+	<update id="updateOrder" parameterType="hashmap">
+		UPDATE t_order
+		<trim prefix="set" suffixOverrides=",">
+			<if test="order_name!=null and '' !=order_name">order_name = #{order_name},</if>
+			<if test="status!=null and '' !=status"> STATUS = #{status},</if>
+			<if test="sys_no!=null and '' !=sys_no"> sys_no = #{sys_no},</if>
+			<if test="order_scope!=null and '' !=order_scope"> order_scope = #{order_scope},</if>
+			<if test="oa_no!=null and '' !=oa_no"> oa_no = #{oa_no},</if>
+			<if test="app_sys_id!=null and '' !=app_sys_id"> app_sys_id = #{app_sys_id},</if>
+			<if test="order_dept!=null and '' !=order_dept"> order_dept = #{order_dept},</if>
+			<if test="order_apply_man!=null and '' !=order_apply_man"> order_apply_man = #{order_apply_man},</if>
+			<if test="develop_man!=null and '' !=develop_man"> develop_man = #{develop_man},</if>
+			<if test="execute_company!=null and '' !=execute_company"> execute_company = #{execute_company},</if>
+			<if test="order_detail!=null and '' !=order_detail"> order_detail = #{order_detail},</if>
+			</trim>			
+			WHERE id = #{id} 
+	
+	</update>
+</mapper> 

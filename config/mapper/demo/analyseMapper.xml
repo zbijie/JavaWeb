@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fzy.demo.analyse.mapper.IAnalyseMapper">
+	
+
+	
+	<!-- 定义要操作的SQL语句:根据order_id查询工单 -->
+	<select id="findOrderAnalyseByOrderId" resultType="hashmap">
+	     SELECT
+					a.id,
+					a.order_id,
+					b.order_name,
+					b.sys_no,
+					b.order_scope,
+					b.oa_no,
+					b.app_sys_id,
+					b.order_dept,
+					b.develop_man,
+					b.execute_company,
+					(
+						SELECT
+							company_name
+						FROM
+							t_company c
+						WHERE
+							c.id = b.execute_company
+					) execute_company_name,
+					status,
+					case 
+						when status='0' then '新建需求'
+		        when status='1' then '需求分析'
+						when status='2' then '需求确认'
+						when status='3' then '需求审核'
+						when status='4' then '执行开发'
+						when status='5' then '需求验收'
+						when status='6' then '上线申请'
+						when status='7' then '上线审批'
+						when status='8' then '上线割接'
+						when status='9' then '后评估'
+						when status='10' then '正常归档'
+				  end status_name,
+					b.order_apply_man,
+					b.order_detail,
+					a.analyse_opinion
+		FROM
+			t_order_analyse a,
+			t_order b
+		WHERE
+			a.order_id = b.id
+		AND a.order_id = #{order_id}
+
+	</select>
+	<!-- 定义添加需求 -->
+	<!--执行增加操作的SQL语句。id和parameterType分别与IUserOperation接口中的addUser方法的名字和参数类型一致。
+    useGeneratedKeys设置为"true"表明要MyBatis获取由数据库自动生成的主键；keyProperty="id"指定把获取到的主键值注入到User的id属性--> 
+    <insert id="saveAnalyse" parameterType="hashmap" > 
+        insert into t_order_analyse(id,order_id,analyse_opinion)  
+             values(#{id},#{order_id},#{analyse_opinion}) 
+	</insert>
+</mapper> 

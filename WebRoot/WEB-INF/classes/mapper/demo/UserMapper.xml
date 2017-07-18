@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fzy.demo.user.mapper.IUserMapper">
+	<!-- 自定义类型 -->
+	<resultMap type="com.fzy.demo.user.model.UserModel" id="UserModelMapper" autoMapping="true">
+		<id column="id" property="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="id" property="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+		<result column="login_name" property="login_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="login_password" property="login_password" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="real_name" property="real_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<result column="dept_id" property="dept_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<resultMap type="com.fzy.demo.user.model.UserModel" id="UserRoleMapper"  extends="UserModelMapper">
+		 <collection property="role_list" ofType="com.fzy.demo.role.model.Role">
+		 	  	<id property="id" column="id" />  
+           	 	<result property="role_name" column="role_name" />  
+            	<result property="rights" column="rights" />  
+		 </collection>
+	</resultMap>
+
+	<!-- 定义要操作的SQL语句 -->
+	<select id="findAllUser" resultMap="UserModelMapper">
+	    SELECT
+			id,
+			login_name,
+			login_password,
+			real_name,
+			dept_id
+		FROM
+			t_user		
+	</select>
+	<!-- 定义要操作的SQL语句 -->
+	<select id="checkLogin" resultType="hashmap">
+	    SELECT
+			id,
+			login_name,
+			login_password,
+			real_name,
+			dept_id
+		FROM
+			t_user
+		WHERE
+			login_name = #{login_name} and login_password=#{login_password}		
+	</select>
+	<!-- 定义要操作的SQL语句 -->
+	<select id="getUserRoleListByLoginName" resultType="hashmap">
+	   SELECT
+		  a.real_name,
+		  a.login_name,
+		  b.role_name,
+		  b.id role_id
+		  
+		FROM
+			t_user a,
+			t_role b,
+			t_user_role c
+		WHERE
+			a.id = c.user_id
+		AND b.id = c.role_id 
+		AND login_name = #{login_name}	
+	</select>
+	<!-- 新定义： 查询用户所拥有的权限列表-->
+	<select id="getRightsListByUserID" resultType="hashmap">
+	  SELECT
+			a.real_name,
+			a.login_name,
+			c.role_name,
+			c.id role_id,
+			c.rights
+		FROM
+			t_user a
+		LEFT JOIN t_user_role b ON a.id = b.user_id
+		LEFT JOIN t_role c ON b.role_id = c.id
+		WHERE	a.id = #{id}
+	</select>
+	
+</mapper> 
